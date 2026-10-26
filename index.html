@@ -69,15 +69,16 @@
       50% { opacity: 0.6; transform: scale(1.2); }
     }
 
-    /* 2. Avatar Wrapper */
+    /* 2. Avatar Wrapper with New Photo */
     .avatar-wrapper {
-      width: 92px;
-      height: 92px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
       padding: 3.5px;
       background: #2563eb;
       margin-bottom: 14px;
       box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+      overflow: hidden;
     }
 
     .avatar-img {
@@ -85,6 +86,7 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
+      object-position: center top;
       background: #e2e8f0;
       display: block;
     }
@@ -305,7 +307,7 @@
       font-weight: 500;
     }
 
-    /* 11. Native App Bottom-Sheet Modal */
+    /* 11. Native Mobile Bottom-Sheet */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -378,10 +380,10 @@
 
     <!-- Circular Profile Photo -->
     <div class="avatar-wrapper">
-      <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80" alt="Avatar" class="avatar-img">
+      <img src="WhatsApp Image 2026-09-23 at 23.03.31.jpeg" alt="Gautam Jha - Stock Learners" class="avatar-img" onerror="this.onerror=null; this.src='profile.jpg';">
     </div>
 
-    <!-- Title & Stats -->
+    <!-- Channel Name & Reviews -->
     <h1 class="title">STOCK LEARNER</h1>
     <div class="subtitle">
       <span>🏆</span> India's No.1 Stock Market Channel
@@ -395,7 +397,7 @@
       Join Free Telegram Channel &rarr;
     </a>
 
-    <!-- Stats Grid -->
+    <!-- Stats Row -->
     <div class="stats-row">
       <div class="stat-box">
         <div class="stat-val">50K+</div>
@@ -411,12 +413,12 @@
       </div>
     </div>
 
-    <!-- Free Calls Info -->
+    <!-- Offer Heading -->
     <div class="offer-title">Get <span>FREE</span> Daily Calls</div>
     <div class="offer-sub">for NIFTY, BANKNIFTY & SENSEX</div>
     <div class="offer-desc">Join thousands of traders getting daily market analysis</div>
 
-    <!-- Limited Access Tag -->
+    <!-- Limited Access Banner -->
     <div class="limited-tag">
       🔥 Limited FREE Access Available
     </div>
@@ -442,13 +444,13 @@
       Join Free Telegram Channel &rarr;
     </a>
 
-    <!-- Disclaimer -->
+    <!-- Legal Disclaimer -->
     <div class="disclaimer-sec">
       <strong>Disclaimer:</strong> This channel is for educational purposes only. Trading involves market risk.
     </div>
   </div>
 
-  <!-- Bottom Navigation & Legal Links -->
+  <!-- Mobile Footer -->
   <footer class="mobile-footer">
     <div class="footer-links-wrap">
       <button class="footer-btn" onclick="openSheet('About Us', 'Stock Learner is an educational platform committed to providing market research, learning materials, and observational insights for traders and learners across India.')">About Us</button>
@@ -464,7 +466,7 @@
     </div>
   </footer>
 
-  <!-- App-like Mobile Bottom Sheet -->
+  <!-- Native Mobile Bottom Sheet Modal -->
   <div class="modal-overlay" id="sheetOverlay" onclick="closeSheet(event)">
     <div class="bottom-sheet" onclick="event.stopPropagation()">
       <div class="sheet-handle"></div>
