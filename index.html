@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>STOCK LEARNER - India's No.1 Stock Market Channel</title>
   
+  <!-- Fast Google Font Load -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    * {
+    /* CSS Reset & Mobile Performance Defaults */
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -21,14 +23,15 @@
 
     body {
       background-color: #f7f9fc;
-      color: #1a202c;
+      color: #0f172a;
       width: 100%;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
-      padding: 20px 16px 0;
+      padding: 24px 16px 0;
+      -webkit-font-smoothing: antialiased;
     }
 
     .mobile-container {
@@ -40,45 +43,57 @@
       text-align: center;
     }
 
-    /* 1. Live Traders Badge */
+    /* 1. Live Online Traders Counter */
     .live-badge {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       background: #eafaf1;
-      border: 1px solid #c7f0db;
-      padding: 6px 14px;
+      border: 1px solid #bbf2d6;
+      padding: 6px 16px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 700;
-      color: #168051;
-      margin-bottom: 18px;
+      color: #15803d;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.08);
     }
 
     .live-dot {
       width: 8px;
       height: 8px;
-      background-color: #10b981;
+      background-color: #16a34a;
       border-radius: 50%;
-      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+      box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25);
       animation: pulse 1.8s infinite ease-in-out;
     }
 
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.2); }
+      50% { opacity: 0.55; transform: scale(1.25); }
     }
 
-    /* 2. Avatar Wrapper with New Photo */
+    /* 2. Avatar with Royal Blue Border Ring */
     .avatar-wrapper {
-      width: 96px;
-      height: 96px;
+      position: relative;
+      width: 98px;
+      height: 98px;
       border-radius: 50%;
       padding: 3.5px;
-      background: #2563eb;
+      background: #0d63ea;
       margin-bottom: 14px;
-      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 6px 20px rgba(13, 99, 234, 0.28);
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
       overflow: hidden;
+      background-color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .avatar-img {
@@ -87,36 +102,36 @@
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
-      background: #e2e8f0;
       display: block;
     }
 
-    /* 3. Titles & Reviews */
+    /* 3. Title & Reviews */
     .title {
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 900;
-      letter-spacing: 0.2px;
+      letter-spacing: -0.2px;
       color: #0b1527;
       text-transform: uppercase;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      line-height: 1.2;
     }
 
     .subtitle {
       font-size: 14px;
       font-weight: 700;
-      color: #2563eb;
+      color: #0d63ea;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      margin-bottom: 7px;
+      margin-bottom: 8px;
     }
 
     .stars {
       color: #f59e0b;
-      font-size: 16px;
+      font-size: 17px;
       letter-spacing: 2px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .reviews-count {
@@ -126,12 +141,12 @@
       margin-bottom: 18px;
     }
 
-    /* 4. Action Buttons */
+    /* 4. High-Conversion Blue CTA Buttons */
     .cta-btn {
       width: 100%;
       background: #0d63ea;
       color: #ffffff;
-      padding: 16px 20px;
+      padding: 15px 20px;
       border-radius: 14px;
       font-size: 16.5px;
       font-weight: 800;
@@ -143,35 +158,63 @@
       box-shadow: 0 8px 22px -3px rgba(13, 99, 234, 0.42);
       transition: all 0.15s ease-in-out;
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle shimmer highlight animation */
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.22) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(25deg);
+      animation: shine 3.5s infinite;
+    }
+
+    @keyframes shine {
+      0% { left: -60%; }
+      20% { left: 120%; }
+      100% { left: 120%; }
     }
 
     .cta-btn:active {
-      transform: scale(0.97);
+      transform: scale(0.975);
       background: #0b54c8;
+      box-shadow: 0 4px 12px rgba(13, 99, 234, 0.3);
     }
 
-    /* 5. Stats Cards Row */
+    /* 5. 3 Stats Cards */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 10px;
       width: 100%;
-      margin: 16px 0 20px;
+      margin: 16px 0 22px;
     }
 
     .stat-box {
       background: #ffffff;
-      padding: 14px 6px;
-      border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      padding: 15px 6px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
       border: 1px solid #edf2f7;
     }
 
     .stat-val {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 900;
       color: #0b1527;
       margin-bottom: 2px;
+      line-height: 1.1;
     }
 
     .stat-label {
@@ -180,20 +223,21 @@
       font-weight: 600;
     }
 
-    /* 6. Offer Content */
+    /* 6. Offer Headline Section */
     .offer-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 900;
       color: #0b1527;
       margin-bottom: 4px;
+      line-height: 1.25;
     }
 
     .offer-title span {
-      color: #2563eb;
+      color: #0d63ea;
     }
 
     .offer-sub {
-      font-size: 13px;
+      font-size: 13.5px;
       color: #1e293b;
       font-weight: 800;
       margin-bottom: 4px;
@@ -203,11 +247,12 @@
       font-size: 12px;
       color: #64748b;
       font-weight: 500;
-      margin-bottom: 14px;
-      padding: 0 8px;
+      margin-bottom: 15px;
+      padding: 0 10px;
+      line-height: 1.45;
     }
 
-    /* 7. Limited Badge */
+    /* 7. Limited FREE Access Banner */
     .limited-tag {
       width: 100%;
       background: #fffbf0;
@@ -224,7 +269,7 @@
       margin-bottom: 12px;
     }
 
-    /* 8. Feature Cards */
+    /* 8. Feature Cards List */
     .feature-stack {
       display: flex;
       flex-direction: column;
@@ -236,12 +281,12 @@
     .feature-card {
       background: #ffffff;
       padding: 14px 16px;
-      border-radius: 13px;
+      border-radius: 14px;
       border: 1px solid #f1f5f9;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.025);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 13px;
       font-size: 13.5px;
       font-weight: 700;
       color: #1e293b;
@@ -249,28 +294,29 @@
     }
 
     .feature-icon {
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1;
+      flex-shrink: 0;
     }
 
-    /* 9. Disclaimer */
+    /* 9. Disclaimer Section */
     .disclaimer-sec {
       font-size: 11px;
       color: #94a3b8;
       line-height: 1.5;
       margin: 16px 0 26px;
-      padding: 0 10px;
+      padding: 0 12px;
     }
 
     .disclaimer-sec strong {
       color: #64748b;
     }
 
-    /* 10. Mobile Footer */
+    /* 10. Footer Section */
     .mobile-footer {
       width: 100vw;
       border-top: 1px solid #edf2f7;
-      padding: 18px 16px 28px;
+      padding: 20px 16px calc(24px + env(safe-area-inset-bottom, 0px));
       background: #f7f9fc;
       display: flex;
       flex-direction: column;
@@ -296,6 +342,10 @@
       padding: 4px;
     }
 
+    .footer-btn:active {
+      color: #0d63ea;
+    }
+
     .dot {
       color: #cbd5e1;
       font-size: 10px;
@@ -307,12 +357,12 @@
       font-weight: 500;
     }
 
-    /* 11. Native Mobile Bottom-Sheet */
+    /* 11. Mobile Bottom Sheet Modal */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(2px);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
       display: none;
       align-items: flex-end;
       justify-content: center;
@@ -323,10 +373,10 @@
       background: #ffffff;
       width: 100%;
       max-width: 440px;
-      border-radius: 20px 20px 0 0;
-      padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+      border-radius: 22px 22px 0 0;
+      padding: 22px 20px calc(24px + env(safe-area-inset-bottom, 0px));
       text-align: left;
-      animation: slideUp 0.25s ease-out;
+      animation: slideUp 0.24s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @keyframes slideUp {
@@ -335,10 +385,10 @@
     }
 
     .sheet-handle {
-      width: 38px;
+      width: 40px;
       height: 4px;
       background: #cbd5e1;
-      border-radius: 2px;
+      border-radius: 99px;
       margin: 0 auto 16px;
     }
 
@@ -352,52 +402,69 @@
     .modal-body {
       font-size: 13px;
       color: #475569;
-      line-height: 1.5;
-      margin-bottom: 18px;
+      line-height: 1.55;
+      margin-bottom: 20px;
     }
 
     .modal-btn {
       width: 100%;
-      padding: 12px;
+      padding: 13px;
       background: #0d63ea;
       color: #ffffff;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 14.5px;
       cursor: pointer;
+    }
+
+    .modal-btn:active {
+      background: #0b54c8;
     }
   </style>
 </head>
 <body>
 
   <div class="mobile-container">
-    <!-- Live Traders Counter -->
+    <!-- Live Traders Online Pill -->
     <div class="live-badge">
       <span class="live-dot"></span>
       5,947 Traders Online
     </div>
 
-    <!-- Circular Profile Photo -->
+    <!-- Circular Profile Photo with Royal Blue Ring -->
     <div class="avatar-wrapper">
-      <img src="WhatsApp Image 2026-09-23 at 23.03.31.jpeg" alt="Gautam Jha - Stock Learners" class="avatar-img" onerror="this.onerror=null; this.src='profile.jpg';">
+      <div class="avatar-inner">
+        <!-- Self-contained vector illustration for instant loading; easy fallback for direct photo -->
+        <svg class="avatar-img" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="60" fill="#1e293b"/>
+          <circle cx="60" cy="48" r="23" fill="#fcd34d"/>
+          <path d="M60 21C45 21 40 32 40 38C40 43 42 45 44 43C46 41 50 37 60 37C70 37 74 41 76 43C78 45 80 43 80 38C80 32 75 21 60 21Z" fill="#1e1b4b"/>
+          <path d="M49 52C51 54 54 55 60 55C66 55 69 54 71 52" stroke="#b45309" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="52" cy="46" r="2.5" fill="#1e1b4b"/>
+          <circle cx="68" cy="46" r="2.5" fill="#1e1b4b"/>
+          <path d="M22 108C22 86 38 78 60 78C82 78 98 86 98 108" fill="#e11d48"/>
+          <path d="M50 78L60 90L70 78" stroke="#fcd34d" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
     </div>
 
-    <!-- Channel Name & Reviews -->
+    <!-- Header Titles & Reviews -->
     <h1 class="title">STOCK LEARNER</h1>
     <div class="subtitle">
       <span>🏆</span> India's No.1 Stock Market Channel
     </div>
 
+    <!-- 5 Golden Stars Rating -->
     <div class="stars">★★★★★</div>
     <div class="reviews-count">4.9/5 (2,340 Reviews)</div>
 
-    <!-- Top Mobile CTA Button -->
+    <!-- Top Primary CTA Button -->
     <a href="https://t.me/+5rXpGriDiWllODQ1" target="_blank" rel="noopener" class="cta-btn">
       Join Free Telegram Channel &rarr;
     </a>
 
-    <!-- Stats Row -->
+    <!-- 3 Stats Cards Grid -->
     <div class="stats-row">
       <div class="stat-box">
         <div class="stat-val">50K+</div>
@@ -413,9 +480,9 @@
       </div>
     </div>
 
-    <!-- Offer Heading -->
+    <!-- Headline Section -->
     <div class="offer-title">Get <span>FREE</span> Daily Calls</div>
-    <div class="offer-sub">for NIFTY, BANKNIFTY & SENSEX</div>
+    <div class="offer-sub">for NIFTY, BANKNIFTY &amp; SENSEX</div>
     <div class="offer-desc">Join thousands of traders getting daily market analysis</div>
 
     <!-- Limited Access Banner -->
@@ -423,11 +490,11 @@
       🔥 Limited FREE Access Available
     </div>
 
-    <!-- Features -->
+    <!-- Feature Cards List -->
     <div class="feature-stack">
       <div class="feature-card">
         <span class="feature-icon">📊</span>
-        <span>Daily Nifty & BankNifty Levels</span>
+        <span>Daily Nifty &amp; BankNifty Levels</span>
       </div>
       <div class="feature-card">
         <span class="feature-icon">🎓</span>
@@ -439,18 +506,18 @@
       </div>
     </div>
 
-    <!-- Bottom Mobile CTA Button -->
+    <!-- Bottom Secondary CTA Button -->
     <a href="https://t.me/+5rXpGriDiWllODQ1" target="_blank" rel="noopener" class="cta-btn">
       Join Free Telegram Channel &rarr;
     </a>
 
-    <!-- Legal Disclaimer -->
+    <!-- Disclaimer Text -->
     <div class="disclaimer-sec">
       <strong>Disclaimer:</strong> This channel is for educational purposes only. Trading involves market risk.
     </div>
   </div>
 
-  <!-- Mobile Footer -->
+  <!-- Mobile Footer Links & Copyright -->
   <footer class="mobile-footer">
     <div class="footer-links-wrap">
       <button class="footer-btn" onclick="openSheet('About Us', 'Stock Learner is an educational platform committed to providing market research, learning materials, and observational insights for traders and learners across India.')">About Us</button>
@@ -459,14 +526,14 @@
       <span class="dot">•</span>
       <button class="footer-btn" onclick="openSheet('Disclaimer', 'Investments and trading in equity, options, and futures carry substantial risk of loss. Please consult your certified financial planner before executing real market positions.')">Disclaimer</button>
       <span class="dot">•</span>
-      <button class="footer-btn" onclick="openSheet('Contact Us', 'For any inquiries, educational questions, or assistance, reach out directly through our verified Telegram support handle.')">Contact Us</button>
+      <button class="footer-btn" onclick="openSheet('Contact Us', 'For any inquiries, educational questions, or channel support, reach out directly through our verified Telegram handle.')">Contact Us</button>
     </div>
     <div class="copy-text">
       &copy; 2026 Gautam Jha Channel. All rights reserved.
     </div>
   </footer>
 
-  <!-- Native Mobile Bottom Sheet Modal -->
+  <!-- App-like Mobile Bottom Sheet Modal -->
   <div class="modal-overlay" id="sheetOverlay" onclick="closeSheet(event)">
     <div class="bottom-sheet" onclick="event.stopPropagation()">
       <div class="sheet-handle"></div>
@@ -477,6 +544,7 @@
   </div>
 
   <script>
+    // Bottom Sheet interactive display
     function openSheet(title, text) {
       document.getElementById('sheetTitle').innerText = title;
       document.getElementById('sheetBody').innerText = text;
